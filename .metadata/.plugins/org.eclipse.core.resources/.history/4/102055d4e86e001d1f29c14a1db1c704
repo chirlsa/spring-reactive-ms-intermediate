@@ -1,0 +1,40 @@
+eureka:
+ client:
+  registerWithEureka: true
+  fetchRegistry: true
+  serviceUrl:
+   defaultZone: http://localhost:8070/eureka/ 
+
+server:
+  port: 9001
+  shutdown: graceful
+  tomcat:
+    connection-timeout: 2s
+    keep-alive-timeout: 15s
+    threads:
+      max: 50
+      min-spare: 5
+
+spring:
+  application:
+    name: catalog-service
+  lifecycle:
+    timeout-per-shutdown-phase: 15s
+  
+---
+spring:
+  data:
+    cassandra:
+      keyspace-name: reactive
+      port: 9042
+      contact-points:
+      - my-cassandra
+      local-datacenter: datacenter1
+        
+  
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh
