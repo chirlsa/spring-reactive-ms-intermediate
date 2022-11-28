@@ -8,11 +8,7 @@ group = 'reactive-microservice-eureka-server'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '17'
 
-configurations {
-	compileOnly {
-			extendsFrom annotationProcessor
-	}
-}
+
 
 repositories {
 	mavenCentral()
@@ -36,7 +32,7 @@ ext {
 //</plugin>
 
 dependencies {
-	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+	//annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.cloud:spring-cloud-starter-config'
 	implementation 'org.springframework.cloud:spring-cloud-starter-bootstrap'
