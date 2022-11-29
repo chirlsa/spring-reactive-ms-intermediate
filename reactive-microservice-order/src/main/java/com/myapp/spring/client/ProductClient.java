@@ -12,11 +12,11 @@ import reactor.util.retry.Retry;
 @Component
 public class ProductClient {
 	
-	private final WebClient webClient;
+	private final WebClient.Builder webClient;
 
 	private static final String PRODUCTS_ROOT_API ="/api/v1/products";
 	
-	public ProductClient(WebClient webClient) {
+	public ProductClient(WebClient.Builder webClient) {
 		this.webClient = webClient;
 	}
 	
@@ -27,7 +27,7 @@ public class ProductClient {
 //				.timeout(Duration.ofSeconds(3), Mono.empty())
 //				;
 		
-		return webClient.get().uri(PRODUCTS_ROOT_API+productId+productName)
+		return webClient.build().get().uri(PRODUCTS_ROOT_API+productId+productName)
 				.retrieve().bodyToMono(Product.class)
 				
 				.timeout(Duration.ofSeconds(3), Mono.empty())
