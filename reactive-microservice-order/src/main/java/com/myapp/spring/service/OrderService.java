@@ -28,9 +28,11 @@ public class OrderService {
 	
 	public Mono<Order> submitOrder(String productId,String productName,int quantity){
 		return productClient.getProductByIdAndName(productId, productName)
-				.map(product -> buildAcceptedOrder(product, quantity))
 				
+				.map(product -> buildAcceptedOrder(product, quantity))
+				.switchIfEmpty(Mono.error(()-> new RuntimeException("Product Name "+productName+" Not Found")))
 				.flatMap(orderRepository::save);
+			
 		
 	}
 	
