@@ -39,7 +39,7 @@ public class OrderService {
 	}
 	
 	public static Order buildRejectedOrder(String productId,String productName,int quantity) {
-		return Order.of(productId, productName, null, quantity);
+		return Order.of("EmptyOrder", "Empty productName", null, 0);
 	}
 	
 	
