@@ -15,11 +15,14 @@ public class ReactiveMicroserviceOrderApplication {
 		SpringApplication.run(ReactiveMicroserviceOrderApplication.class, args);
 	}
 	
+	
+	
+	
 	@Bean
 	@LoadBalanced
 	WebClient.Builder loadBalancedWebClientBuilder(){
 		
-		return WebClient.builder().baseUrl("http://CATALOG-SERVICE");
+		return WebClient.builder().baseUrl("lb://CATALOG-SERVICE");
 		
 	}
 	

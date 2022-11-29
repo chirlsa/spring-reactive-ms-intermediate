@@ -29,7 +29,7 @@ public class OrderService {
 	public Mono<Order> submitOrder(String productId,String productName,int quantity){
 		return productClient.getProductByIdAndName(productId, productName)
 				.map(product -> buildAcceptedOrder(product, quantity))
-				.defaultIfEmpty(buildRejectedOrder( productId,productName, quantity))
+				
 				.flatMap(orderRepository::save);
 		
 	}

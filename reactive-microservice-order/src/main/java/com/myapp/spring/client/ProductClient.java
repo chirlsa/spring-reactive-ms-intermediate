@@ -27,7 +27,7 @@ public class ProductClient {
 //				.timeout(Duration.ofSeconds(3), Mono.empty())
 //				;
 		
-		return webClient.build().get().uri(PRODUCTS_ROOT_API+productId+productName)
+		return webClient.build().get().uri(PRODUCTS_ROOT_API+"/"+productId+"/"+productName)
 				.retrieve().bodyToMono(Product.class)
 				
 				.timeout(Duration.ofSeconds(3), Mono.empty())
