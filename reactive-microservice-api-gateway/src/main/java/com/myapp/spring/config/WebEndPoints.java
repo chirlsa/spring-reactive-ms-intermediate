@@ -37,7 +37,7 @@ public class WebEndPoints {
 	SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
 		
 		return http.authorizeExchange(exchange -> exchange.anyExchange().authenticated())
-				.formLogin(Customizer.withDefaults()).build();
+				.oauth2Login(Customizer.withDefaults()).build();
 		
 	}
 
