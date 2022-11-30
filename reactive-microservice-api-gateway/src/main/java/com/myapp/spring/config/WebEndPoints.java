@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.reactive.EnableWebFluxSecurity;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
+import org.springframework.security.oauth2.client.web.server.ServerOAuth2AuthorizedClientRepository;
+import org.springframework.security.oauth2.client.web.server.WebSessionServerOAuth2AuthorizedClientRepository;
 import org.springframework.security.web.server.SecurityWebFilterChain;
 import org.springframework.web.reactive.function.server.RouterFunction;
 import org.springframework.web.reactive.function.server.RouterFunctions;
@@ -28,6 +30,11 @@ public class WebEndPoints {
 		ServerResponse.status(HttpStatus.SERVICE_UNAVAILABLE).build())
 		
 		.build();		
+	}
+	
+	@Bean
+	ServerOAuth2AuthorizedClientRepository authorizedClientRepository() {
+		return new WebSessionServerOAuth2AuthorizedClientRepository();
 	}
 	
 	@Bean
